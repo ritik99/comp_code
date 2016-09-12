@@ -1,0 +1,50 @@
+/* next palindrome solution*/
+
+
+#include<iostream>
+#include<vector>
+using namespace std;
+int main()
+{
+	int t;
+	cin >> t;
+	while(t!=0)
+	{
+		int c;
+		cin >> c;
+		int x = c+1;
+		bool  palin_found = false;
+		while(palin_found == false)
+		{
+			bool ispalin = true;
+			vector<int> q;
+			int ten = 10;
+			int r = 0;
+			while(x%(ten/10) != x)
+			{
+				//int a = (x%ten - r)/(ten/10);
+				q.push_back((x%ten - r)/(ten/10));
+				r = x%ten;
+				ten = ten * 10;
+				//cout << "a : " << a << endl;
+			}
+			for(int u = 0; u < q.size(); u++)
+			{
+				if(q[u] != q[q.size() - 1 - u])
+				{
+					ispalin = false;
+				}
+				
+			}
+			if(ispalin == true)
+			{
+				cout << x << endl;
+				palin_found = true;
+			}
+			x = x + 1;
+		}
+		t = t - 1;
+	}
+	return 0;
+}
+			
